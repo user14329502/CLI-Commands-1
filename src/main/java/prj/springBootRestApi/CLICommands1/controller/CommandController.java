@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import prj.springBootRestApi.CLICommands1.dto.CommandCreateDTO;
+import prj.springBootRestApi.CLICommands1.dto.CommandReadDTO;
+import prj.springBootRestApi.CLICommands1.service.CommandService;
 
 import java.util.List;
 
