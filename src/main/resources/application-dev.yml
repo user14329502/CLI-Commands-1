@@ -1,0 +1,15 @@
+spring:
+  logging:
+    level:
+      io:
+        pivotal: DEBUG
+  datasource:
+    url: jdbc:postgresql://localhost:5432/commands
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+#  sql:
+#    init:
+#      mode: always
