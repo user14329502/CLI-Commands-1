@@ -3,7 +3,6 @@ package prj.springBootRestApi.CLICommands1.dto;
 import java.util.Objects;
 
 public class CommandReadDTO {
-
     public Integer id;
     public String description;
     public String line;
@@ -16,6 +15,7 @@ public class CommandReadDTO {
 
     public CommandReadDTO() {
     }
+
 
     public Integer getId() {
         return id;

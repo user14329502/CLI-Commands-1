@@ -1,22 +1,14 @@
 package prj.springBootRestApi.CLICommands1.model;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
 public class Command {
-
     @Id
-    @SequenceGenerator(   // necessary?
-            name = "command_id_sequence",
-            sequenceName = "command_id_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "command_id_sequence" // necessary?
+            strategy = GenerationType.SEQUENCE
     )
     private Integer id;
     private String description;

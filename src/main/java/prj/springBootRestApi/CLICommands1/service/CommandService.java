@@ -12,20 +12,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class CommandService {
-
-    //    @Autowired // necessary?
     private CommandRepository commandRepository;
-
-//    @Autowired
-//    private ModelMapper modelMapper;
-
 
     public CommandService(CommandRepository commandRepository) {
         this.commandRepository = commandRepository;
     }
-
-//    public ArticleService() {
-//    }
 
     public List<CommandReadDTO> getAllCommands(){
         return commandRepository.findAll()
@@ -39,8 +30,9 @@ public class CommandService {
                 .orElseThrow(() -> new ResourceNotFoundException());
         return convertEntityToDto(command);
     }
+
     public void addCommand(CommandCreateDTO request){
-        // TODO: Check if the request has the correct format ?
+        // TODO: Check if the request has the correct format
         Command command = convertDtoToEntity(request);
         command.setCreated_at(LocalDateTime.now());
         commandRepository.save(command);
@@ -63,15 +55,14 @@ public class CommandService {
     }
 
 
-
     // DTO <-> Entity Conversion
     // TODO: Use the 'modelMapper' library for automatic conversion
-    private CommandReadDTO convertEntityToDto(Command user){
-        CommandReadDTO userLocationDTO = new CommandReadDTO();
-        userLocationDTO.setId(user.getId());
-        userLocationDTO.setDescription(user.getDescription());
-        userLocationDTO.setLine(user.getLine());
-        return userLocationDTO;
+    private CommandReadDTO convertEntityToDto(Command command){
+        CommandReadDTO dto = new CommandReadDTO();
+        dto.setId(command.getId());
+        dto.setDescription(command.getDescription());
+        dto.setLine(command.getLine());
+        return dto;
     }
 
     private Command convertDtoToEntity(CommandCreateDTO commandDTO){
@@ -81,26 +72,4 @@ public class CommandService {
         return command;
     }
 
-
-
-
-
-
-
-
-//     Automatic conversion using the 'modelMapper' library:
-//    private ArticleDTO convertEntityToDto(Article article){
-//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
-//        ArticleDTO articleDTO = new ArticleDTO();
-//        articleDTO = modelMapper.map(article, articleDTO.class);
-//        return articleDTO;
-//    }
-//
-//    private User convertDtoToEntity(UserLocationDTO userLocationDTO){
-//        modelMapper.getConfiguration()
-//                .setMatchingStrategy(MatchingStrategies.LOOSE);
-//        User user = new User();
-//        user = modelMapper.map(userLocationDTO, User.class);
-//        return user;
-//    }
 }

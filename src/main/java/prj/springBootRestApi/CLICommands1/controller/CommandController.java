@@ -1,7 +1,6 @@
 package prj.springBootRestApi.CLICommands1.controller;
 
 import io.swagger.annotations.ApiOperation;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import prj.springBootRestApi.CLICommands1.dto.CommandCreateDTO;
@@ -15,27 +14,16 @@ import java.util.List;
 public class CommandController {
     private CommandService commandService;
 
-
     public CommandController(CommandService commandService) {     // Dependency (ArticleRepository) injection
         this.commandService = commandService;
     }
 
-    //    @GetMapping
-//    public Iterable<Article> findAll() {
-//        return articles.findAll();
-//    }
     @GetMapping
     @ApiOperation(value = "Get all commands.") // Information for the API documentation
     public ResponseEntity<List<CommandReadDTO>> findAll() {
         return ResponseEntity.ok(commandService.getAllCommands());
     }
 
-//    @GetMapping("/{id}")
-//    public Article findById(Integer id) {
-//        return articles.findById(id);
-//    }
-
-    // write better code here
     @GetMapping("/{id}")
     @ApiOperation(value = "Get the command of the given id number.") // Information for the API documentation
     public ResponseEntity<CommandReadDTO> findById(@PathVariable Integer id) {

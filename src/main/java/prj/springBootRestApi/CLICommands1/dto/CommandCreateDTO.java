@@ -3,7 +3,6 @@ package prj.springBootRestApi.CLICommands1.dto;
 import java.util.Objects;
 
 public class CommandCreateDTO {
-
     public String description;
     public String line;
 

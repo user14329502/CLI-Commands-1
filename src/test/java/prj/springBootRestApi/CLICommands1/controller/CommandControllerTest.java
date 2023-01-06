@@ -16,29 +16,25 @@ import prj.springBootRestApi.CLICommands1.dto.CommandReadDTO;
 import prj.springBootRestApi.CLICommands1.service.CommandService;
 
 @WebMvcTest(CommandController.class)
-class CommandsControllerTest {
-
+class CommandControllerTest {
     CommandController controller;
-
     @MockBean
     CommandService service;
-
     List<CommandReadDTO> commandReadDTOs = new ArrayList();
-
 
     @BeforeEach
     void setUp() {
         controller = new CommandController(service);
 
-        /* In order to only test the controller unit, mock articleDTOs are generated in this class instead of using the
-           real articles from ArticleRepository */
+        /* In order to only test the controller unit, mock commandDTOs are generated in this class instead of using the
+           real commands from CommandRepository */
         commandReadDTOs = List.of(new CommandReadDTO(1,"Test command","test command"));
     }
 
     @Test
     void shouldReturnAllCommands() {
-
         Mockito.when(service.getAllCommands()).thenReturn(commandReadDTOs);
+
         assertEquals(1,controller.findAll().getBody().spliterator().getExactSizeIfKnown());
     }
 
